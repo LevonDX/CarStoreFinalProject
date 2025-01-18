@@ -1,0 +1,18 @@
+﻿@model CarStore.Data.Data.Entities.CarMake
+
+@{
+    ViewData["Title"] = "Add Car Make";
+}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Add Car Make</h1>
+    <form method="post" asp-controller="Admin" asp-action="AddCarMake">
+        <div class="mb-3">
+            <label for="carMakeName" class="form-label">Car Make Name</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Enter car make name" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+    </form>
+</div>
