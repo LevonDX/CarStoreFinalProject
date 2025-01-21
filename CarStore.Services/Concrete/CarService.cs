@@ -1,6 +1,5 @@
 ﻿using CarStore.Services.Abstract;
 using CarStore.Web.Data;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,34 +8,37 @@ using System.Threading.Tasks;
 
 namespace CarStore.Services.Concrete
 {
-    public class CarMakeService : ICarMakeService
+    public class CarService : ICarService
     {
         private readonly ApplicationDbContext _context;
 
-        public CarMakeService(ApplicationDbContext context)
+        public CarService(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public async Task AddCarMakeAsync(CarMake carMake)
+        public async Task AddCarAsync(Car car)
         {
-            await _context.CarMakes.AddAsync(carMake);
+            await _context.Cars.AddAsync(car);
             await _context.SaveChangesAsync();
         }
 
-        public Task<CarMake> GetCarMakeByIdAsync(Guid id)
+        public Task<Car> GetCarByIdAsync(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<CarMake>> GetCarMakesAsync()
+        public Task<CarModel> GetCarModel(Guid id)
         {
-            List<CarMake> carMakes = await _context.CarMakes.ToListAsync();
-
-            return carMakes;
+            throw new NotImplementedException();
         }
 
-        public Task<CarMake> UpdateCarMakeAsync(CarMake carMake)
+        public Task<List<Car>> GetCarsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Car> UpdateCarAsync(Car car)
         {
             throw new NotImplementedException();
         }

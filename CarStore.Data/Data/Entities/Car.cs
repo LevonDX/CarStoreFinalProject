@@ -23,6 +23,13 @@ namespace CarStore.Data.Data.Entities
 
         public int? Year { get; set; }
 
-        public List<string> Images { get; set; } = null!;
+        [NotMapped]
+        public List<string>? Images
+        {
+            get
+            {
+                return new List<string>();
+            }
+        }
     }
 }
