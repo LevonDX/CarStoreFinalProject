@@ -23,6 +23,7 @@ namespace CarStore.Data.Data.Entities
 
         public int? Year { get; set; }
 
+        public byte[] ImageBytes { get; set; }
         [NotMapped]
         public List<string>? Images
         {

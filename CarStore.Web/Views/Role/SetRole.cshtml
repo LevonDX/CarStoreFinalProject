@@ -1,0 +1,35 @@
+﻿@model SetUserRoleViewModel
+
+@{
+    ViewData["Title"] = "Set User Role";
+}
+
+<h2>Set User Role</h2>
+
+<div class="container mt-4">
+    <form asp-controller="Role" asp-action="SetRole" method="post">
+        <div class="mb-3">
+            <label asp-for="Users" class="form-label">Select User:</label>
+            <select asp-for="Users" class="form-select" name="user" required>
+                <option value="">-- Select User --</option>
+                @foreach (var user in Model.Users)
+                {
+                    <option value="@user">@user</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Roles" class="form-label">Select Role:</label>
+            <select asp-for="Roles" class="form-select" name="role" required>
+                <option value="">-- Select Role --</option>
+                @foreach (var role in Model.Roles)
+                {
+                    <option value="@role">@role</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Set Role</button>
+    </form>
+</div>

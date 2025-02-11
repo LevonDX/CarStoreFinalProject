@@ -1,0 +1,16 @@
+﻿@page
+@model CarStore.Razor.Pages.CarsModel
+@{
+    foreach (string car in Model.CarNames)
+    {
+        <p>@car</p>
+    }
+
+
+    <form method="post">
+        <input type="text" asp-for="FilterString" />
+        <input type="submit" value="Filter" />
+    </form>
+}
+
+

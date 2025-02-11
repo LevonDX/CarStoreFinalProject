@@ -1,0 +1,17 @@
+﻿@model List<string>
+
+<h3>Upload image</h3>
+
+<form action="/Car/UploadImage" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+</form>
+
+<hr />
+
+@foreach(string s in Model)
+{
+    <img src="@s" height="200px" width="200px" />
+}
+
+<a asp-action="SendMail" class="btn-primary">Send Mail</a>

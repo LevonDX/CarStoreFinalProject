@@ -2,8 +2,10 @@ global using CarStore.Services.Abstract;
 
 using CarStore.Services.Concrete;
 using CarStore.Web.Data;
+using CarStore.Web.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace CarStore.Web
 {
@@ -27,6 +29,7 @@ namespace CarStore.Web
                 options.SignIn.RequireConfirmedAccount = false;
                 options.SignIn.RequireConfirmedEmail = false;
             })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddControllersWithViews();
@@ -35,7 +38,9 @@ namespace CarStore.Web
             builder.Services.AddScoped<ICarMakeService, CarMakeService>();
             builder.Services.AddScoped<ICarModelService, CarModelService>();
             builder.Services.AddScoped<ICarService, CarService>();
+            builder.Services.AddScoped<ICarSendMailService, CarSendMailService>();
 
+            // setup logging to text file
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

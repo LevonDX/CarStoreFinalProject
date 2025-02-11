@@ -1,4 +1,5 @@
-﻿using CarStore.Services.Abstract;
+﻿using CarStore.Data;
+using CarStore.Services.Abstract;
 using CarStore.Web.Data;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,20 @@ namespace CarStore.Services.Concrete
     public class CarService : ICarService
     {
         private readonly ApplicationDbContext _context;
+
+        ICarStoreRepository<Car> _carStoreRepository;
+
+        public CarService(CarStoreRepository<Car> carStoreRepository)
+        {
+            _carStoreRepository = carStoreRepository;
+        }
+
+        public void AddCars(Car car1, Car car2)
+        {
+            _carStoreRepository.Add(car1);
+            _carStoreRepository.Add(car2);
+            _carStoreRepository.SaveChanges();
+        }
 
         public CarService(ApplicationDbContext context)
         {

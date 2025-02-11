@@ -2,11 +2,12 @@
 using CarStore.Services.Abstract;
 using CarStore.Web.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarStore.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = nameof(Roles.Admin))]
     public class AdminController : Controller
     {
         private readonly ICarMakeService _carMakeService;
@@ -97,7 +98,7 @@ namespace CarStore.Web.Controllers
         [Route("admin/add-car")]
         public async Task<IActionResult> AddCar(AddCarViewModel model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
